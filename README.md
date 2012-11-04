@@ -1,4 +1,4 @@
 webpic
 ======
 
-Web based picture view
+Web based picture view. Class project for CSC380
