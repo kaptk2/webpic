@@ -12,10 +12,10 @@ class Upload extends CI_Controller {
 	{
 		//Load Model(s)
 		$this->load->model('album');
-		
-		// Load Username from cookie TODO
-		$user =  'user1';
-		
+
+		// Load Username from cookie
+		$user =  $this->session->userdata('user');
+
 		// Build Listings of Albums
 		$albums = directory_map('./users/'.$user, 1);
 		$menu['items']=$this->album->build_listing($user, $albums);
@@ -26,11 +26,11 @@ class Upload extends CI_Controller {
 		$this->load->view('photo_upload_view', array('error' => ' ' ));
 		$this->load->view('footer');
 	}
-	
+
 	public function new_directory()
 	{
-		// Load Username from cookie TODO
-		$user =  'user1';
+		// Load Username from cookie
+		$user =  $this->session->userdata('user');
 
 		if ($_POST)
 		{
@@ -57,21 +57,21 @@ class Upload extends CI_Controller {
 		$this->load->view('directory_view');
 		$this->load->view('footer');
 	}
-	
-	
+
+
 
 	public function do_upload()
 	{
-		// Load Username from cookie TODO
-		$user =  'user1';
-		
+		// Load Username from cookie
+		$user =  $this->session->userdata('user');
+
 		// Build path to save image
 		$album = $this->input->post('album', TRUE);
 		$path = './users/'.$user.'/'.$album.'/';
 
 		// Set image upload path
 		$config['upload_path'] = $path;
-		
+
 		// Set image upload rules
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '2000';
@@ -100,11 +100,11 @@ class Upload extends CI_Controller {
 
 			// Load Library
 			$this->load->library('image_lib', $config);
-			
+
 			// Create thumbnail
 			if(!$this->image_lib->resize())
 				die($this->image_lib->display_errors());
-			
+
 			redirect(site_url('/dashboard/album/'.$album));
 		}
 	}
