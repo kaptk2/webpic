@@ -4,24 +4,18 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		// Load Helpers
-		$this->load->helper('file');
-
 		if ($_POST)
 		{
 			// Get POST'ed variables
 			$user = $this->input->post('user', TRUE);
 			$userpass = $this->input->post('password');
 
-			$password = read_file('./password/'.$user)
-			if ($password) // Make sure password exists
+			$password = trim(read_file('./passwords/'.$user));
+
+			if ($password == $userpass)
 			{
-				// Check the password
-				if ($password === $userpass)
-				{
-					$this->session->set_userdata(array('user' => $user));
-					redirect(site_url('/dashboard/album/'));
-				}
+				$this->session->set_userdata(array('user' => $user));
+				redirect(site_url('/dashboard/album/'));
 			} else {
 				die('I should redirect you to the signup page');
 			}

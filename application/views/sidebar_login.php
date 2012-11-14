@@ -4,7 +4,7 @@
       <div class="well sidebar-nav">
         <ul class="nav nav-list">
           <li class="nav-header">Actions</li>
-          <li class="active"><a href="#">Sign Up</a></li>
+          <li class="active"><a href="<?=site_url('/signup')?>">Sign Up</a></li>
           <li><a href="#">View Terms of Service</a></li>
         </ul>
         <form method="POST" action="<?=site_url('/dashboard')?>">
