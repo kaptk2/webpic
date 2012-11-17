@@ -9,10 +9,11 @@
 		<form method="POST" action="<?=site_url('/signup')?>">
           <fieldset>
             <legend>Signup</legend>
+            <label>User Name</label>
             <input type="text" name="user" placeholder="E-Mail Address">
-            <br>
+            <label>Password</label>
             <input type="password" name="password1" placeholder="Password">
-            <br>
+            <label>Confirm Password</label>
             <input type="password" name="password2" placeholder="Password Again">
             <br>
             <button type="submit" class="btn">Signup</button>

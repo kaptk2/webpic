@@ -1,34 +1,30 @@
 	<div class="span9">
 		<p>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt
-			ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo
-			dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-			sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor
-			invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.
+			<?php if($this->session->flashdata('error')) : ?>
+				<div class="alert">
+					<a class="close" data-dismiss="alert">×</a>
+					<?=$this->session->flashdata('error')?>
+				</div>
+			<?php endif; ?>
 		</p>
-		<p>
-			 At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-			 takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing
-			 elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-			 diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-			 no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur
-			 sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-			 sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-			 gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet,
-			 consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna
-			 aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-			 clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut
-			labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et
-			ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-			ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et
-			dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-			Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-			amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna
-			aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-			gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-		</p>
+		    <div class="hero-unit">
+				<h1>Not Already A User?</h1>
+				<p>Get started with Webpic by signing up!</p>
+				<p>
+					<form method="POST" action="<?=site_url('/signup')?>">
+					  <fieldset>
+						<legend>Signup</legend>
+						<label>User Name</label>
+						<input type="text" name="user" placeholder="E-Mail Address">
+						<label>Password</label>
+						<input type="password" name="password1" placeholder="Password">
+						<label>Confirm Password</label>
+						<input type="password" name="password2" placeholder="Password Again">
+						<br>
+						<button type="submit" class="btn btn-primary btn-large">Signup</button>
+					  </fieldset>
+					</form>
+				</p>
+			</div>
 	</div><!--/span-->
 </div><!--/row-->

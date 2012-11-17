@@ -6,6 +6,15 @@ class Upload extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('form');
+		// Load Username from cookie
+		$user =  $this->session->userdata('user');
+
+		if(!$user)
+		{
+			// Unknown user trying to get in
+			$this->session->set_flashdata('error', 'Username or Password Incorrect');
+			redirect(site_url('/dashboard/'));
+		}
 	}
 
 	public function index()

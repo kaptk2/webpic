@@ -7,12 +7,12 @@ class Album extends CI_Model
 		// Call the Model constructor
 		parent::__construct();
 	}
-	
+
 	function build_listing($user, $albums, $currentAlbum='')
 	{
 		// This function builds a album directory listing
 		$menu = array();
-		
+
 		foreach ($albums as $albumItem)
 		{
 			$link = site_url("/dashboard/album/$albumItem");
@@ -26,12 +26,12 @@ class Album extends CI_Model
 		}
 		return $menu;
 	}
-    
+
     function build_entry($user, $fileName, $albumName)
     {
 		$thumbnail = base_url("/users/$user/$albumName/thumbnails/$fileName");
 		$link = base_url("/users/$user/$albumName/$fileName");
-		$url = "<a href='$link' rel='lightbox[$albumName]'><img src='$thumbnail'/></a>";
+		$url = "<a href='$link' class='draggable' rel='lightbox[$albumName]'><img src='$thumbnail'/></a>";
         return $url;
     }
 

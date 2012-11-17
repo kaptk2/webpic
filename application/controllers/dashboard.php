@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 		{
 			// Get POST'ed variables
 			$user = $this->input->post('user', TRUE);
-			$userpass = $this->input->post('password');
+			$userpass = md5($this->input->post('password')); //TODO md5 is not good for passwords
 
 			$password = trim(read_file('./passwords/'.$user));
 
@@ -17,7 +17,8 @@ class Dashboard extends CI_Controller {
 				$this->session->set_userdata(array('user' => $user));
 				redirect(site_url('/dashboard/album/'));
 			} else {
-				die('I should redirect you to the signup page');
+				$this->session->set_flashdata('error', 'Username or Password Incorrect');
+				redirect(site_url('/dashboard/'));
 			}
 		}
 		$this->load->view('header');
@@ -28,11 +29,19 @@ class Dashboard extends CI_Controller {
 
 	public function album($name='default')
 	{
+		// Load Username from cookie
+		$user =  $this->session->userdata('user');
+
+		if(!$user)
+		{
+			// Unknown user trying to get in
+			$this->session->set_flashdata('error', 'Username or Password Incorrect');
+			redirect(site_url('/dashboard/'));
+		}
 		//Load Model(s)
 		$this->load->model('album');
 
-		// Load Username from cookie
-		$user =  $this->session->userdata('user');
+
 
 		// Build Listings of Albums
 		$albums = directory_map('./users/'.$user, 1);
@@ -60,6 +69,12 @@ class Dashboard extends CI_Controller {
 		$this->load->view('sidebar_album', $menu);
 		$this->load->view('dashboard_view', $data);
 		$this->load->view('footer');
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(site_url('/dashboard'));
 	}
 }
 

@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Flickr Reboot</title>
+    <title>Webpic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CSC380 Flickr Reboot Application">
+    <meta name="description" content="CSC380 Webpic Application">
     <meta name="author" content="Andrew Niemantsverdriet, Jacob Carter">
 
     <!-- Le styles -->
     <link href="<?=base_url('static/css/bootstrap.css')?>" rel="stylesheet">
     <link href="<?=base_url('static/css/lightbox.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -45,11 +46,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand">Flickr Reboot</a>
+          <a class="brand">Webpic</a>
           <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-				Not Logged In
-            </p>
+			  <p class="navbar-text pull-right">
+				  <?php if($this->session->userdata('user')) : ?>
+					<a href="<?=site_url('/dashboard/logout')?>">Log Out</a>
+				  <?php else : ?>
+					Not Logged In
+				  <?php endif; ?>
+              </p>
             <ul class="nav">
               <li class="active"><a href="<?=site_url()?>">Home</a></li>
 <!--

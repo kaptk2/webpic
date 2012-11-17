@@ -12,7 +12,10 @@ class Signup extends CI_Controller {
 			$password2 = $this->input->post('password2');
 
 			if(read_file('./passwords/'.$user))
-				die('Username Already exists'); //TODO make this friendly
+			{
+				$this->session->set_flashdata('error', 'Username already exists');
+				redirect(site_url('/dashboard/'));
+			}
 
 
 			if ($password1 == $password2)
@@ -31,7 +34,8 @@ class Signup extends CI_Controller {
 				$this->session->set_userdata(array('user' => $user));
 				redirect(site_url('/dashboard/album/'));
 			}
-			die('Passwords don\'t match'); //TODO make this friendly
+			$this->session->set_flashdata('error', 'Passwords don\'t match');
+			redirect(site_url('/dashboard/'));
 		}
 		// No data has be POST'ed
 		$this->load->view('header');
