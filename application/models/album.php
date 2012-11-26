@@ -29,12 +29,16 @@ class Album extends CI_Model
 
     function build_entry($user, $fileName, $albumName)
     {
-		$thumbnail = base_url("/users/$user/$albumName/thumbnails/$fileName");
-		$link = base_url("/users/$user/$albumName/$fileName");
-		$url = "<a href='$link' class='draggable' rel='lightbox[$albumName]'><img src='$thumbnail'/></a>";
-        return $url;
+	$thumbnail = base_url("/users/$user/$albumName/thumbnails/$fileName");
+	$link = base_url("/users/$user/$albumName/$fileName");
+	$url = "<a href='$link' class='draggable' rel='lightbox[$albumName]'><img src='$thumbnail'/></a>";
+       return $url;
     }
 
+    function delete_pic($image_url)
+    {
+	unlink($image_url); //change image url to build off of user and base_url
+    }   
 }
 
 /* End of file album.php */

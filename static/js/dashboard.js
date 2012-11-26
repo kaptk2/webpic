@@ -8,7 +8,14 @@ $(function() {
 		});
 	$("#trash").droppable({
 		drop: function( event, ui ) {
-			alert('You should delete ' + ui);
+			console.log(ui);
+			$.ajax({
+				url: 'http://csc380.coaldiver.org/carterj/webpic/index.php/dashboard/deletepic',
+				type: 'POST',
+				data: 'HREF=' + ui.draggable.attr('href')
+			});
+			ui.helper.effect('transfer', {to: '#trash', className: 'ui-effects-transfer'}, 500);
+			ui.draggable.remove();
 		}
 	});
 });

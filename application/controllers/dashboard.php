@@ -71,6 +71,15 @@ class Dashboard extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function deletepic()
+	{
+		if($_POST)
+		{
+			$image_url = $_POST['HREF'];
+			$this->album->delete_pic($image_url);
+		}
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
