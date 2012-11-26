@@ -34,6 +34,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
     -->
+    
+    <!--JQuery needs to be loaded here-->
+    <script src="<?=base_url('/static/js/jquery.js')?>"></script>
+	<!-- -->
   </head>
 
   <body>

@@ -25,6 +25,32 @@
 					  </fieldset>
 					</form>
 				</p>
+				<p>
+					<!--Scroller Start-->
+					<div id="slider" class="carousel slide">
+						<div class="carousel-inner">
+							<?php
+							$images = glob("/home/cscrmc/csc380.coaldiver.org/carterj/webpic/users/jacob/default/*.jpg");
+							foreach($images as $image)
+							{
+								$image = 'http://csc380.coaldiver.org/carterj/webpic/users/jacob/default/'.basename($image);
+								echo '<div class="item"><img src="'.$image.'"></div>';
+							}
+							?>
+						</div>
+						<a class="carousel-control left" href="#slider" data-slide="prev">&lsaquo;</a>
+						<a class="carousel-control right" href="#slider" data-slide="next">&rsaquo;</a>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$(".slider").carousel({
+									interval: 1000
+								});
+							});
+						</script>
+					</div>
+					<!--End of Scroller-->
+				</p>
 			</div>
 	</div><!--/span-->
 </div><!--/row-->
+
