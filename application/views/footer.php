@@ -9,7 +9,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?=base_url('/static/js/jquery.js')?>"></script>
+    <script src="<?=base_url('/static/js/jquery.carousel.min.js')?>"></script>
     <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
     <script src="<?=base_url('/static/js/bootstrap-alert.js')?>"></script>
     <script src="<?=base_url('/static/js/bootstrap-modal.js')?>"></script>
